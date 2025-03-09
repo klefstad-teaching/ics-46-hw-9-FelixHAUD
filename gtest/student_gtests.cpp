@@ -53,7 +53,7 @@ TEST(DijkstraTest, ExtractPathTest) {
     EXPECT_EQ(path, expected_path);
 }
 
-TEST(PrintPathTest, ValidPath) {
+TEST(DijkstraTest, PrintPathTest) {
     Graph G;
     G.numVertices = 5;
     G.resize(G.numVertices);
@@ -74,6 +74,31 @@ TEST(PrintPathTest, ValidPath) {
     print_path(path, totalWeight);
     string output = testing::internal::GetCapturedStdout(); 
 
-    string expectedOutput = "Shortest path: Total Weight = 10\n0 -> 2 -> 3 -> 4\n";
+    string expectedOutput = "Total cost is 10\n0 2 3 4\n";
     EXPECT_EQ(output, expectedOutput);
+}
+
+TEST(WordLadder, RunVerifyWordLadder) {
+    EXPECT_NO_FATAL_FAILURE(verify_word_ladder());
+}
+
+TEST(WordLadder, EditDistanceTest) {
+    EXPECT_TRUE(edit_distance_within("cat", "bat", 1));
+    EXPECT_TRUE(edit_distance_within("chat", "cheat", 1));
+    EXPECT_FALSE(edit_distance_within("car", "cheat", 1));
+    EXPECT_FALSE(edit_distance_within("cat", "dog", 1));
+}
+
+TEST(WordLadder, AdjacencyTest) {
+    EXPECT_TRUE(is_adjacent("cat", "bat"));
+    EXPECT_TRUE(is_adjacent("chat", "cheat"));
+    EXPECT_FALSE(is_adjacent("cat", "dog"));
+}
+
+TEST(WordLadder, PrintTest) {
+    std::vector<std::string> ladder = {"cat", "bat", "bit", "but", "put"};
+    testing::internal::CaptureStdout();
+    print_word_ladder(ladder);
+    std::string output = testing::internal::GetCapturedStdout();
+    EXPECT_NE(output.find("cat bat bit but put"), std::string::npos);
 }

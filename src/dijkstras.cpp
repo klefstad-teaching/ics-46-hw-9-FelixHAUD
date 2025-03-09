@@ -51,11 +51,11 @@ void print_path(const vector<int>& v, int total) {
         return;
     }
 
-    cout << "Shortest path: Total Weight = " << total << endl;
+    cout << "Total cost is " << total << endl;
     for (size_t i = 0; i < v.size(); ++i) {
         cout << v[i];
         if (i != v.size() - 1) {
-            cout << " -> "; 
+            cout << " "; 
         }
     }
     cout << endl;
