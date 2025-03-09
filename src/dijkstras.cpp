@@ -10,8 +10,7 @@ vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& prev
     pq.push({0, source});
 
     while(!pq.empty()) {
-        int u = pq.top().second;
-        int d_u = pq.top().first;
+        auto [d_u, u] = pq.top(); 
         pq.pop();
 
         if (d_u > distances[u]) continue;
@@ -39,11 +38,7 @@ vector<int> extract_shortest_path(const vector<int>& /*distances*/, const vector
 
     reverse(path.begin(), path.end());
 
-    if (path.empty()) {
-        return {};
-    }
-
-    return path;
+    return path.empty() ? vector<int>{} : path;
 }
 void print_path(const vector<int>& v, int total) {
     if (v.empty()) {
