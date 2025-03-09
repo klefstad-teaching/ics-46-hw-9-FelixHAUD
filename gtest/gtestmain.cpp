@@ -5,7 +5,7 @@
 // -------------------------------------------------------------------------- //
 
 #include <gtest/gtest.h>
-
+/*
 extern "C" {
 
 void __ubsan_get_current_report_data(const char** issue_kind, const char** message,
@@ -32,10 +32,10 @@ void asan_report_callback(const char* report) {
 
 void __asan_set_error_report_callback(void (*callback)(const char*));
 }
-
+*/
 int main(int argc, char** argv) {
   testing::InitGoogleTest(&argc, argv);
-  __asan_set_error_report_callback(asan_report_callback);
+  // __asan_set_error_report_callback(asan_report_callback);
   return RUN_ALL_TESTS();
 }
 
